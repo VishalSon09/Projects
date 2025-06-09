@@ -1,0 +1,25 @@
+MP4 to MOV (SINGLE)
+ffmpeg -i input.mp4 -c:v prores_ks -profile:v 3 -qscale:v 9 -acodec pcm_s16le output.mov
+
+
+MP4 to MOV(BATCH)
+for i in *.mp4; do ffmpeg -i "$i" -c:v prores_ks -profile:v 3 -qscale:v 9 -acodec pcm_s16le "${i%.*}.mov"; done
+
+
+Converting audio
+ffmpeg -i input.mp3 -c:a pcm_s16le output.wav
+
+
+Batch Converting audio
+for i in *.mp3; do ffmpeg -i "$i" -c:a pcm_s16le "${i%.*}.mp3"; done
+
+
+
+
+Flag			Explanation
+-i <input>		input video file (e.g. -i my-movie.mp4)
+-c:v prores_ks		video codec to be ProRes Kostya
+-profile:v 3		profile (value ranges from 0 to 3, where a higher number results in better quality)
+-qscale:v 9		quality scale (value can be 5, 9 or 13, where 5 is best and 13 worst quality)
+-acodec pcm_s16le	audio codec to be pcm_s16le
+-i <output.mov>		output video file (e.g. -i my-movie-converted.mov)

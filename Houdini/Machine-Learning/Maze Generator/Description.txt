@@ -1,0 +1,10 @@
+Maze Generation in Houdini.
+
+Currently implements three algorithms(finding shortest path):
+1. Binary tree algo
+2. Hunt and Kill algo
+3. A-Star algo
+
+Includes SOP solver solution and an alternative VEX only solution.
+
+
